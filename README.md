@@ -10,15 +10,14 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -30,7 +29,6 @@
 
 > School Library is a ruby based tool used to record books stored in a library and who borrows them. The app allows users to add new students or teachers, new books, and save records of who borrowed a given book and the date it was borrowed.
 
-**[your_project__name]** is a...
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -40,6 +38,10 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Key Features <a name="key-features"></a>
+
+> Coming Soon
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -85,6 +87,9 @@ Install this project with:
 - Twitter: [@OguntayoMicheal](https://twitter.com/Oguns_micky)
 - LinkedIn: [@OguntayoMicheal](https://www.linkedin.com/in/ogunsmicky/)
 
+## 🔭 Future Features <a name="future-features"></a>
+
+We can add a feature to change existing book and author name in future.
 ## 🤝 Contributing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
