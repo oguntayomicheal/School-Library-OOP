@@ -40,7 +40,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-> Coming Soon
+- Add new students and teachers
+- Add new books.
+- Save records of who borrowed a given book and when.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -128,6 +130,6 @@ I would like to thank Microverse
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
