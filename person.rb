@@ -1,4 +1,6 @@
 require './nameable'
+require './capitalize'
+require './trimmer'
 
 class Person < Nameable
   attr_reader :id
@@ -28,3 +30,12 @@ class Person < Nameable
     @name
   end
 end
+
+person = Person.new(22, 'maximilianus')
+person.correct_name
+
+capitalized = CapitalizeDecorator.new(person)
+capitalized.correct_name
+
+trim = TrimmerDecorator.new(capitalized)
+trim.correct_name
