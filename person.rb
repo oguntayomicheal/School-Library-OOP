@@ -1,6 +1,6 @@
-require './nameable'
-require './capitalize'
-require './trimmer'
+require_relative 'nameable'
+require_relative 'capitalize'
+require_relative 'trimmer'
 
 class Person < Nameable
   attr_reader :id
