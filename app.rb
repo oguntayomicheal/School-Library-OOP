@@ -146,6 +146,23 @@ class App
     run()
   end
 
+  def list_rentals_of_person_id()
+    colorize_outprint(36, 'Id of person: ')
+    id = gets.chomp.to_i
+    person_arr = @people.select { |person| person.id == id }
+
+    # Print rentals for that person
+    if person_arr.empty?
+        colorize_output(31, 'No person matches the given ID!!')
+    else
+        person_arr[0].rentals.each do |rental|
+            puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+        end
+    end
+
+    run()
+  end
+
   def execute_user_option(user_option)
     case user_option
     when "1" then list_all_books()
@@ -153,6 +170,7 @@ class App
     when "3" then create_person()
     when "4" then create_book()
     when "5" then create_rental()
+    when "6" then list_rentals_of_person_id()
     end
   end
 
