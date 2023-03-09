@@ -15,22 +15,40 @@ class App
       end
 
       def display_list
-        puts 'Please choose an option by entering a number:'
+        colorize_output(33, 'Please choose an option by entering a number:')
         @cmd.each do |index, command|
           puts "#{index} - #{command}"
         end
       end
 
-      def colorize(color_code, statements)
+      def colorize_output(color_code, statements)
        puts "\e[#{color_code}m#{statements}\e[0m"
+      end
+
+      def list_all_books
+        if @books.empty?
+          colorize_output(31, "Please insert books first!!")
+        else
+          @books.each_with_index do |book, index|
+            puts "Title: #{book.title}, Author: #{book.author}"
+          end
+        end
+        run()
+      end
+
+      def execute_user_option(user_option)
+        case user_option
+        when "1" then list_all_books()
+        end
       end
 
        # Run the program
   def run
-    colorize(32, 'Welcome to School Library App!')
-    display_list()
-
-    
+    colorize_output(32, 'Welcome to School Library App!')
+    display_list() 
+    user_option = gets.chomp
+    execute_user_option(user_option)
+    puts
   end
 
 
