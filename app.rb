@@ -36,9 +36,21 @@ class App
         run()
       end
 
+      def list_all_people
+        if @people.empty?
+            colorize_output(31, "Please insert people first!!")
+        else
+          @people.each do |person|
+            puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+          end
+        end
+        run()
+      end
+
       def execute_user_option(user_option)
         case user_option
         when "1" then list_all_books()
+        when "2" then list_all_people()
         end
       end
 
