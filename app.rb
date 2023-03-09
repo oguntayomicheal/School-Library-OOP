@@ -1,5 +1,6 @@
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'book'
 
 class App
   def initialize
@@ -54,10 +55,11 @@ class App
   end
 
   def create_person
-    colorize_output(35, 'Do you want to create a student (1) or a teacher (2)? [Input the nummber]:')
+    colorize_outprint(35, 'Do you want to create a student (1) or a teacher (2)? [Input the nummber]: ')
 
     case gets.chomp
     when "1"
+    colorize_output(36, 'Enter Student details')
       colorize_outprint(35, 'Name: ')
       name = gets.chomp
 
@@ -74,6 +76,7 @@ class App
       @people.push(Student.new(age, name, parent_permission))
       colorize_output(36, 'Person Student Created successfully')
     when "2"
+        colorize_output(36, 'Enter Teacher details')
       colorize_outprint(35, 'Name: ')
       name = gets.chomp
 
@@ -85,16 +88,29 @@ class App
       @people.push(Teacher.new(age, name, specialization))
       colorize_output(36, 'Person Teacher Created successfully')
     end
-
-    
     run()
   end
 
+   def create_book
+    colorize_output(36, 'Enter Book details')
+    colorize_outprint(35, 'Title: ')
+    title = gets.chomp
+
+    colorize_outprint(35, 'Author: ')
+    author = gets.chomp
+
+    @books.push(Book.new(title, author))
+
+    colorize_output(36, 'Book Created successfully')
+    run()
+  end
+  
   def execute_user_option(user_option)
     case user_option
     when "1" then list_all_books()
     when "2" then list_all_people()
     when "3" then create_person()
+    when "4" then create_book()
     end
   end
 
