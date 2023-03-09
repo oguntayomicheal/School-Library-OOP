@@ -6,13 +6,13 @@ require_relative 'rental'
 class App
   def initialize
     @action_list = {
-      "1": 'List all books',
-      "2": 'List all people',
-      "3": 'Create a person',
-      "4": 'Create a book',
-      "5": 'Create a rental',
-      "6": 'List all rentals for a given person id',
-      "7": 'Exit'
+      '1': 'List all books',
+      '2': 'List all people',
+      '3': 'Create a person',
+      '4': 'Create a book',
+      '5': 'Create a rental',
+      '6': 'List all rentals for a given person id',
+      '7': 'Exit'
     }
     @books = []
     @people = []
@@ -35,32 +35,32 @@ class App
 
   def list_all_books
     if @books.empty?
-      colorize_output(31, "Please insert books first!!")
+      colorize_output(31, 'Please insert books first!!')
     else
-      @books.each_with_index do |book, index|
+      @books.each do |book|
         puts "Title: #{book.title}, Author: #{book.author}"
       end
     end
-    run()
+    run
   end
 
   def list_all_people
     if @people.empty?
-      colorize_output(31, "Please insert people first!!")
+      colorize_output(31, 'Please insert people first!!')
     else
       @people.each do |person|
         puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       end
     end
-    run()
+    run
   end
 
   def create_person
     colorize_outprint(35, 'Do you want to create a student (1) or a teacher (2)? [Input the nummber]: ')
 
     case gets.chomp
-    when "1"
-    colorize_output(36, 'Enter Student details')
+    when '1'
+      colorize_output(36, 'Enter Student details')
       colorize_outprint(35, 'Name: ')
       name = gets.chomp
 
@@ -70,14 +70,14 @@ class App
       colorize_outprint(35, 'Has parent permission? [Y/N]: ')
       permission = gets.chomp.downcase
       case permission
-      when "y" then parent_permission = true
-      when "n" then parent_permission = false
+      when 'y' then parent_permission = true
+      when 'n' then parent_permission = false
       end
 
       @people.push(Student.new(age, name, parent_permission))
       colorize_output(36, 'Person Student Created successfully')
-    when "2"
-        colorize_output(36, 'Enter Teacher details')
+    when '2'
+      colorize_output(36, 'Enter Teacher details')
       colorize_outprint(35, 'Name: ')
       name = gets.chomp
 
@@ -89,10 +89,10 @@ class App
       @people.push(Teacher.new(age, name, specialization))
       colorize_output(36, 'Person Teacher Created successfully')
     end
-    run()
+    run
   end
 
-   def create_book
+  def create_book
     colorize_output(36, 'Enter Book details')
     colorize_outprint(35, 'Title: ')
     title = gets.chomp
@@ -103,7 +103,7 @@ class App
     @books.push(Book.new(title, author))
 
     colorize_output(36, 'Book Created successfully')
-    run()
+    run
   end
 
   def list_all_books_with_numbers
@@ -119,8 +119,8 @@ class App
 
   def list_all_person_with_numbers
     if @people.empty?
-        colorize_output(31, 'Please insert people first!!')
-        run
+      colorize_output(31, 'Please insert people first!!')
+      run
     else
       @people.each_with_index do |person, index|
         puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
@@ -130,20 +130,19 @@ class App
 
   def create_rental()
     colorize_output(36, 'Select a book from the following list by number')
-    list_all_books_with_numbers()
+    list_all_books_with_numbers
     book_option = gets.chomp.to_i
 
     colorize_output(36, 'Select a person from the following list by number (not id)')
-    list_all_person_with_numbers()
+    list_all_person_with_numbers
     person_option = gets.chomp.to_i
-   
 
     colorize_outprint(36, 'Date: ')
     date = gets.chomp
     Rental.new(date, @books[book_option], @people[person_option])
 
     colorize_output(36, 'Rental created successfully')
-    run()
+    run
   end
 
   def list_rentals_of_person_id()
@@ -152,14 +151,14 @@ class App
     person_arr = @people.select { |person| person.id == id }
 
     if person_arr.empty?
-        colorize_output(31, 'No person matches the given ID!!')
+      colorize_output(31, 'No person matches the given ID!!')
     else
-        person_arr[0].rentals.each do |rental|
-            puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
-        end
+      colorize_output(36, 'Rentals:')
+      person_arr[0].rentals.each do |rental|
+        puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
+      end
     end
-
-    run()
+    run
   end
 
   def exit_app
@@ -167,20 +166,20 @@ class App
     exit
   end
 
-  def execute_user_option(user_option)
-    case user_option
-    when "1" then list_all_books()
-    when "2" then list_all_people()
-    when "3" then create_person()
-    when "4" then create_book()
-    when "5" then create_rental()
-    when "6" then list_rentals_of_person_id()
-    when "7" then exit_app()
+  def execute_user_option(option)
+    case option
+    when '1' then list_all_books
+    when '2' then list_all_people
+    when '3' then create_person
+    when '4' then create_book
+    when '5' then create_rental
+    when '6' then list_rentals_of_person_id
+    when '7' then exit_app
     end
   end
 
   def run
-    display_list()
+    display_list
     user_option = gets.chomp
     execute_user_option(user_option)
     puts
