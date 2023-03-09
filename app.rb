@@ -151,7 +151,6 @@ class App
     id = gets.chomp.to_i
     person_arr = @people.select { |person| person.id == id }
 
-    # Print rentals for that person
     if person_arr.empty?
         colorize_output(31, 'No person matches the given ID!!')
     else
@@ -163,6 +162,11 @@ class App
     run()
   end
 
+  def exit_app
+    colorize_output(32, 'Thank you for using this app!')
+    exit
+  end
+
   def execute_user_option(user_option)
     case user_option
     when "1" then list_all_books()
@@ -171,10 +175,10 @@ class App
     when "4" then create_book()
     when "5" then create_rental()
     when "6" then list_rentals_of_person_id()
+    when "7" then exit_app()
     end
   end
 
-  # Run the program
   def run
     display_list()
     user_option = gets.chomp
