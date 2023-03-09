@@ -1,6 +1,7 @@
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
+require_relative 'rental'
 
 class App
   def initialize
@@ -104,13 +105,54 @@ class App
     colorize_output(36, 'Book Created successfully')
     run()
   end
-  
+
+  def list_all_books_with_numbers
+    if @books.empty?
+      colorize_output(31, 'Please insert books first!!')
+      run
+    else
+      @books.each_with_index do |book, index|
+        puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+      end
+    end
+  end
+
+  def list_all_person_with_numbers
+    if @people.empty?
+        colorize_output(31, 'Please insert people first!!')
+        run
+    else
+      @people.each_with_index do |person, index|
+        puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      end
+    end
+  end
+
+  def create_rental()
+    colorize_output(36, 'Select a book from the following list by number')
+    list_all_books_with_numbers()
+    book_option = gets.chomp.to_i
+
+    colorize_output(36, 'Select a person from the following list by number (not id)')
+    list_all_person_with_numbers()
+    person_option = gets.chomp.to_i
+   
+
+    colorize_outprint(36, 'Date: ')
+    date = gets.chomp
+    Rental.new(date, @books[book_option], @people[person_option])
+
+    colorize_output(36, 'Rental created successfully')
+    run()
+  end
+
   def execute_user_option(user_option)
     case user_option
     when "1" then list_all_books()
     when "2" then list_all_people()
     when "3" then create_person()
     when "4" then create_book()
+    when "5" then create_rental()
     end
   end
 
