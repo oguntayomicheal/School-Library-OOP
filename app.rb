@@ -5,24 +5,8 @@ require_relative 'rental'
 
 class App
   def initialize
-    @action_list = {
-      '1': 'List all books',
-      '2': 'List all people',
-      '3': 'Create a person',
-      '4': 'Create a book',
-      '5': 'Create a rental',
-      '6': 'List all rentals for a given person id',
-      '7': 'Exit'
-    }
     @books = []
     @people = []
-  end
-
-  def display_list
-    colorize_output(33, 'Please choose an option by entering a number:')
-    @action_list.each do |index, command|
-      puts "#{index} - #{command}"
-    end
   end
 
   def colorize_output(color_code, statements)
@@ -41,7 +25,8 @@ class App
         puts "Title: #{book.title}, Author: #{book.author}"
       end
     end
-    run
+    display_list
+    continue
   end
 
   def list_all_people
@@ -52,7 +37,8 @@ class App
         puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       end
     end
-    run
+    display_list
+    continue
   end
 
   def create_person
@@ -89,7 +75,8 @@ class App
       @people.push(Teacher.new(age, name, specialization))
       colorize_output(36, 'Person Teacher Created successfully')
     end
-    run
+    display_list
+    continue
   end
 
   def create_book
@@ -103,13 +90,15 @@ class App
     @books.push(Book.new(title, author))
 
     colorize_output(36, 'Book Created successfully')
-    run
+    display_list
+    continue
   end
 
   def list_all_books_with_numbers
     if @books.empty?
       colorize_output(31, 'Please insert books first!!')
-      run
+      display_list
+      continue
     else
       @books.each_with_index do |book, index|
         puts "#{index}) Title: #{book.title}, Author: #{book.author}"
@@ -120,7 +109,8 @@ class App
   def list_all_person_with_numbers
     if @people.empty?
       colorize_output(31, 'Please insert people first!!')
-      run
+      display_list
+      continue
     else
       @people.each_with_index do |person, index|
         puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
@@ -142,7 +132,8 @@ class App
     Rental.new(date, @books[book_option], @people[person_option])
 
     colorize_output(36, 'Rental created successfully')
-    run
+    display_list
+    continue
   end
 
   def list_rentals_of_person_id()
@@ -158,30 +149,23 @@ class App
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
     end
-    run
+    display_list
+    continue
   end
 
-  def exit_app
-    colorize_output(32, 'Thank you for using this app!')
-    exit
-  end
+  def continue
+    user_option = gets.chomp
 
-  def execute_user_option(option)
-    case option
+    case user_option
     when '1' then list_all_books
     when '2' then list_all_people
     when '3' then create_person
     when '4' then create_book
     when '5' then create_rental
     when '6' then list_rentals_of_person_id
-    when '7' then exit_app
+    when '7'
+      colorize_output(32, 'Thank you for using this app!')
+      exit
     end
-  end
-
-  def run
-    display_list
-    user_option = gets.chomp
-    execute_user_option(user_option)
-    puts
   end
 end
