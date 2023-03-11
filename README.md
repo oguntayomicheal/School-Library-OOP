@@ -47,15 +47,13 @@
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
-
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
 In order to run this project you need:
   
-  Ruby has to be installed
+  - Ruby to be installed
 
 ### Setup
 
@@ -75,6 +73,15 @@ Install this project with:
   bundle install
 ```
 
+### Run 
+
+run this project with:
+
+
+```sh
+  ruby main.rb
+```
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -92,9 +99,6 @@ Install this project with:
 ## 🔭 Future Features <a name="future-features"></a>
 
 We can add a feature to change existing book and author name in future.
-## 🤝 Contributing
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
