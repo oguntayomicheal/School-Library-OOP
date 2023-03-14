@@ -1,8 +1,6 @@
 require_relative 'app'
-require_relative 'modules/savebook'
-class Start
-  include BookData
 
+class Start
   def initialize
     @app = App.new
   end

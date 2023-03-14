@@ -4,12 +4,15 @@ require_relative 'book'
 require_relative 'rental'
 
 require_relative 'modules/savebook'
+require_relative 'modules/saveperson'
 
 class App
   include BookData
+  include PersonData
+
   def initialize
     @books = read_book
-    @people = []
+    @people = read_person
   end
 
   def colorize_output(color_code, statements)
@@ -146,7 +149,7 @@ class App
 
   def save_data
     preserve_book(@books)
-    # preserve_people(@people)
+    preserve_people(@people)
     # preserve_rental(@rentals_details)
   end
 end
