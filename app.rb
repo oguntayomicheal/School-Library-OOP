@@ -3,9 +3,12 @@ require_relative 'teacher'
 require_relative 'book'
 require_relative 'rental'
 
+require_relative 'modules/savebook'
+
 class App
+  include BookData
   def initialize
-    @books = []
+    @books = read_book
     @people = []
   end
 
@@ -139,5 +142,11 @@ class App
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
     end
+  end
+
+  def save_data
+    preserve_book(@books)
+    # preserve_people(@people)
+    # preserve_rental(@rentals_details)
   end
 end

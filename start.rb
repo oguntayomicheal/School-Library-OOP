@@ -1,5 +1,8 @@
 require_relative 'app'
+require_relative 'modules/savebook'
 class Start
+  include BookData
+
   def initialize
     @app = App.new
   end
@@ -39,6 +42,7 @@ class Start
     when '5' then @app.create_rental
     when '6' then @app.list_rentals_of_person_id
     when '7'
+      @app.save_data
       @app.colorize_output(32, 'Thank you for using this app!')
       exit
     end
