@@ -25,8 +25,6 @@ class App
         puts "Title: #{book.title}, Author: #{book.author}"
       end
     end
-    display_list
-    continue
   end
 
   def list_all_people
@@ -37,8 +35,6 @@ class App
         puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
       end
     end
-    display_list
-    continue
   end
 
   def create_person
@@ -75,8 +71,6 @@ class App
       @people.push(Teacher.new(age, name, specialization))
       colorize_output(36, 'Person Teacher Created successfully')
     end
-    display_list
-    continue
   end
 
   def create_book
@@ -90,8 +84,6 @@ class App
     @books.push(Book.new(title, author))
 
     colorize_output(36, 'Book Created successfully')
-    display_list
-    continue
   end
 
   def list_all_books_with_numbers
@@ -132,8 +124,6 @@ class App
     Rental.new(date, @books[book_option], @people[person_option])
 
     colorize_output(36, 'Rental created successfully')
-    display_list
-    continue
   end
 
   def list_rentals_of_person_id()
@@ -148,24 +138,6 @@ class App
       person_arr[0].rentals.each do |rental|
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
-    end
-    display_list
-    continue
-  end
-
-  def continue
-    user_option = gets.chomp
-
-    case user_option
-    when '1' then list_all_books
-    when '2' then list_all_people
-    when '3' then create_person
-    when '4' then create_book
-    when '5' then create_rental
-    when '6' then list_rentals_of_person_id
-    when '7'
-      colorize_output(32, 'Thank you for using this app!')
-      exit
     end
   end
 end
