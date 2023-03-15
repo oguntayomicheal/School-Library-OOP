@@ -7,6 +7,7 @@ class Start
 
   def app_start
     puts @app.colorize_output(32, 'Welcome to the School Library App!')
+    @app.create_saved_rentals
     loop do
       display_list
       continue
@@ -30,6 +31,7 @@ class Start
   end
 
   def continue
+    @app.colorize_outprint(32, 'Enter option: ')
     user_option = gets.chomp
 
     case user_option

@@ -5,14 +5,17 @@ require_relative 'rental'
 
 require_relative 'modules/savebook'
 require_relative 'modules/saveperson'
+require_relative 'modules/saverentals'
 
 class App
   include BookData
   include PersonData
+  include RentalData
 
   def initialize
     @books = read_book
     @people = read_person
+    @rentals = read_rental
   end
 
   def colorize_output(color_code, statements)
@@ -127,13 +130,23 @@ class App
 
     colorize_outprint(36, 'Date: ')
     date = gets.chomp
+
     Rental.new(date, @books[book_option], @people[person_option])
 
+    new_rental = {
+      dating: date,
+      book_num: book_option,
+      person_num: person_option
+    }
+    @rentals.push(new_rental)
+
     colorize_output(36, 'Rental created successfully')
+    puts
   end
 
   def list_rentals_of_person_id()
-    colorize_outprint(36, 'Id of person: ')
+    list_all_people
+    colorize_outprint(36, 'Enter Id of person from above: ')
     id = gets.chomp.to_i
     person_arr = @people.select { |person| person.id == id }
 
@@ -145,11 +158,19 @@ class App
         puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}"
       end
     end
+    puts
   end
 
   def save_data
     preserve_book(@books)
     preserve_people(@people)
-    # preserve_rental(@rentals_details)
+    preserve_rental(@rentals)
+  end
+
+  def create_saved_rentals
+    data = @rentals
+    data.each do |d|
+      Rental.new(d['dating'], @books[d['book_num']], @people[d['person_num']])
+    end
   end
 end
