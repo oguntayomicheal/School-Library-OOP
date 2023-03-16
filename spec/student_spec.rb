@@ -19,5 +19,11 @@ describe Student do
         it 'test the play_hocky method' do
             expect(@new_student.play_hooky).to eql '¯\(ツ)/¯'
         end
+
+        it 'classrooms setter should populate @students array' do
+            @new_student.classroom=@new_classroom
+            expect(@new_classroom.students.length).to eql(1)
+          end
+
     end
 end
