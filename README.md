@@ -96,6 +96,14 @@ run this project with:
 - Twitter: [@OguntayoMicheal](https://twitter.com/Oguns_micky)
 - LinkedIn: [@OguntayoMicheal](https://www.linkedin.com/in/ogunsmicky/)
 
+👤 **Alelign Ayana**
+
+- GitHub: [@atatm](https://github.com/atatm)
+- Twitter: [@_alelignayana](https://twitter.com/@alelign_ayana)
+- LinkedIn: [Alelign Ayana](https://www.linkedin.com/in/alelign-ayana/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 We can add a feature to change existing book and author name in future.
