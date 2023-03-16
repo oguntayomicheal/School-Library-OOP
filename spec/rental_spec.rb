@@ -15,9 +15,9 @@ describe Rental do
     end
 
     it 'should validate the attributes of the rental' do
-        expect(@new_rental.date).to eq '2020/09/09'
-        expect(@new_rental.person).to eq @new_student
-        expect(@new_rental.book).to eq @new_book
-      end
+      expect(@new_rental.date).to eq '2020/09/09'
+      expect(@new_rental.person).to eq @new_student
+      expect(@new_rental.book).to eq @new_book
+    end
   end
 end
